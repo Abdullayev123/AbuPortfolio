@@ -12,19 +12,33 @@ interface Experience {
   isCurrentJob: boolean;
   myContributions: string[];
 }
-const About = () => {
-  const [tab, setTab] = useState("work");
 
-  const [workData, setWorkData] = useState<Experience[]>([]);
+interface Education {
+  _id: string;
+  schoolName: string;
+  degree: string;
+  fieldOfStudy: string;
+  startDate: string;
+  endDate?: string;
+  description?: string;
+  schoolImage?: string;
+  isCurrent?: boolean;
+}
+
+const About = () => {
+  const [tab, setTab] = useState("experiences");
+
+  const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   const fetchExperiences = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/experiences");
-      setWorkData(res.data);
+      setLoading(true);
+      const res = await axios.get(`http://localhost:8000/api/${tab}`);
+      setData(res.data);
     } catch (err) {
-      setError("Failed to load work experience.");
+      setError("Failed to load data.");
     } finally {
       setLoading(false);
     }
@@ -32,31 +46,8 @@ const About = () => {
 
   useEffect(() => {
     fetchExperiences();
-  }, []);
+  }, [tab]); // IMPORTANT — tab dəyişəndə yenidən load et
 
-  const educationData = [
-    {
-      institution: "University of Technology",
-      degree: "M.S. in Computer Science",
-      image: "https://via.placeholder.com/150/university",
-      startDate: new Date("2018-09-01"),
-      endDate: new Date("2020-05-20"),
-      details: [
-        "Specialized in Human-Computer Interaction",
-        "Thesis: 'Optimizing Web Performance for Low-Bandwidth Environments'",
-      ],
-    },
-    {
-      institution: "State College",
-      degree: "B.S. in Web Design & Development",
-      image: "https://via.placeholder.com/150/college",
-      startDate: new Date("2014-09-01"),
-      endDate: new Date("2018-05-20"),
-      details: ["Graduated Summa Cum Laude", "President of the Web Dev Club"],
-    },
-  ];
-
-  // Helper
   const formatDate = (date: any) => {
     if (!date) return "Present";
     return new Date(date).toLocaleDateString("en-US", {
@@ -79,7 +70,7 @@ const About = () => {
         {Array.from({ length: 20 }).map((_, index) => (
           <div
             key={index}
-            className="border-l border-[#1a1a1a]/5 dark:border-[#eeeeee]/5 h-full"
+            className="border-l border-[#1a1a1a]/3 dark:border-[#eeeeee]/2 h-full"
           />
         ))}
       </div>
@@ -95,12 +86,12 @@ const About = () => {
         "
         >
           <button
-            onClick={() => setTab("work")}
+            onClick={() => setTab("experiences")}
             className={`
               flex-1 py-2 rounded-lg transition-all duration-300
               ${
-                tab === "work"
-                  ? "bg-[#eeeeee] dark:bg-black/30 text-[#1a1a1a] dark:text-[#eeeeee] shadow-sm"
+                tab === "experiences"
+                  ? "bg-[#eeeeee] dark:bg-black/30 text-[#1a1a1a] dark:text-[#eeeeee]"
                   : "text-[#1a1a1a]/50 dark:text-[#eeeeee]/40 hover:bg-[#1a1a1a]/10 dark:hover:bg-[#eeeeee]/10"
               }
             `}
@@ -109,12 +100,12 @@ const About = () => {
           </button>
 
           <button
-            onClick={() => setTab("education")}
+            onClick={() => setTab("educations")}
             className={`
               flex-1 py-2 rounded-lg transition-all duration-300
               ${
-                tab === "education"
-                  ? "bg-[#eeeeee] dark:bg-black/30 text-[#1a1a1a] dark:text-[#eeeeee] shadow-sm"
+                tab === "educations"
+                  ? "bg-[#eeeeee] dark:bg-black/30 text-[#1a1a1a] dark:text-[#eeeeee]"
                   : "text-[#1a1a1a]/50 dark:text-[#eeeeee]/40 hover:bg-[#1a1a1a]/10 dark:hover:bg-[#eeeeee]/10"
               }
             `}
@@ -123,31 +114,31 @@ const About = () => {
           </button>
         </div>
 
-        {/* Content Box */}
+        {/* Content */}
         <div
           className="
           p-4 md:p-8 rounded-xl shadow
           border border-[#1a1a1a]/10 dark:border-[#eeeeee]/10
           bg-white dark:bg-[#eeeeee]/5 
-          backdrop-blur-md min-h-[300px] transition-all duration-300
+          backdrop-blur-md min-h-[300px]
           relative z-10
         "
         >
-          {tab === "work" && (
+          {/* Work Experience */}
+          {tab === "experiences" && data.length > 0 && (
             <div className="text-[#1a1a1a] dark:text-[#eeeeee] space-y-8">
               {loading && <p>Loading work experience...</p>}
               {error && <p className="text-red-500">{error}</p>}
 
               {!loading &&
-                !error &&
-                workData.map((job) => (
+                data.map((job: Experience) => (
                   <div
                     key={job._id}
                     className="flex flex-col md:flex-row gap-6 items-center md:items-start"
                   >
                     <img
                       src={job.companyImage}
-                      alt={`${job.companyName} logo`}
+                      alt="logo"
                       className="w-12 h-12 rounded-lg object-cover border border-[#1a1a1a]/10 dark:border-[#eeeeee]/10 mt-1"
                     />
 
@@ -165,14 +156,9 @@ const About = () => {
                         {job.isCurrentJob ? "Present" : formatDate(job.endDate)}
                       </p>
 
-                      <ul className="mt-3 list-disc list-inside space-y-2 text-xs md:text-sm text-[#1a1a1a]/90 dark:text-[#eeeeee]/90">
-                        {job.myContributions.map((item, idx) => (
-                          <li
-                            key={idx}
-                            className="tracking-wide leading-normal"
-                          >
-                            {item}
-                          </li>
+                      <ul className="mt-3 list-disc list-inside space-y-2 text-xs md:text-sm">
+                        {job.myContributions?.map((item, idx) => (
+                          <li key={idx}>{item}</li>
                         ))}
                       </ul>
                     </div>
@@ -181,34 +167,42 @@ const About = () => {
             </div>
           )}
 
-          {/* EDUCATION TAB (unchanged) */}
-          {tab === "education" && (
+          {/* Education */}
+          {tab === "educations" && data.length > 0 && (
             <div className="text-[#1a1a1a] dark:text-[#eeeeee] space-y-8">
-              {educationData.map((edu) => (
-                <div key={edu.institution} className="flex gap-4 items-start">
-                  <img
-                    src={edu.image}
-                    alt={`${edu.institution} logo`}
-                    className="w-12 h-12 rounded-lg object-cover border border-[#1a1a1a]/10 dark:border-[#eeeeee]/10 mt-1"
-                  />
-                  <div className="flex-1">
-                    <h3 className="font-bold text-lg md:text-xl">
-                      {edu.institution}
-                    </h3>
-                    <p className="font-medium text-[#1a1a1a]/80 dark:text-[#eeeeee]/80">
-                      {edu.degree}
-                    </p>
-                    <p className="text-xs uppercase tracking-wider text-[#1a1a1a]/60 dark:text-[#eeeeee]/60 mt-1">
-                      {formatDate(edu.startDate)} - {formatDate(edu.endDate)}
-                    </p>
-                    <ul className="mt-3 list-disc list-inside space-y-1.5 text-sm text-[#1a1a1a]/90 dark:text-[#eeeeee]/90">
-                      {edu.details.map((item, idx) => (
-                        <li key={idx}>{item}</li>
-                      ))}
-                    </ul>
+              {loading && <p>Loading education...</p>}
+
+              {!loading &&
+                data.map((edu: Education) => (
+                  <div key={edu._id} className="flex gap-4 items-start">
+                    <img
+                      src={edu.schoolImage}
+                      alt="logo"
+                      className="w-12 h-12 rounded-full object-contain border border-[#1a1a1a]/10 dark:border-[#eeeeee]/10 mt-1"
+                    />
+
+                    <div className="flex-1">
+                      <h3 className="font-bold text-lg md:text-xl">
+                        {edu.schoolName}
+                      </h3>
+
+                      <p className="font-medium text-[#1a1a1a]/80 dark:text-[#eeeeee]/80">
+                        {edu.degree && `${edu.degree} - `} {edu.fieldOfStudy}
+                      </p>
+
+                      <p className="text-xs uppercase tracking-wider mt-1">
+                        {formatDate(edu.startDate)} –{" "}
+                        {edu.isCurrent ? "Present" : formatDate(edu.endDate)}
+                      </p>
+
+                      {edu.description && (
+                        <p className="mt-3 text-sm opacity-90">
+                          {edu.description}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
           )}
         </div>

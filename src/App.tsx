@@ -15,6 +15,8 @@ import About from "./pages/main/About";
 import AddExperience from "./pages/admin/AddExperience";
 import Experiences from "./pages/admin/Experiences";
 import EditExperience from "./pages/admin/EditExperience";
+import AddEducation from "./pages/admin/AddEducation";
+import Education from "./pages/admin/Education";
 
 function App() {
   return (
@@ -27,17 +29,17 @@ function App() {
           <Route path="projects" element={<MyProject />} />
           <Route path="project/:id" element={<ProjectDetails />} />
           <Route path="skills" element={<About />} />
-          <Route path="skills" element={<About />} />
         </Route>
         <Route path="admin/*" element={<AdminLayout />}>
           <Route index element={<AllSkills />} />
           <Route path="add-skill" element={<AddSkill />} />
           <Route path="edit-skill/:id" element={<EditSkill />} />
-
           <Route path="all-works" element={<AllWorks />} />
           <Route path="add-works" element={<AddWorks />} />
           <Route path="add-experience" element={<AddExperience />} />
           <Route path="experience" element={<Experiences />} />
+          <Route path="educations" element={<Education />} />
+          <Route path="add-educations" element={<AddEducation />} />
           <Route path="edit-work/:id" element={<EditWork />} />
           <Route path="edit-experience/:id" element={<EditExperience />} />
         </Route>

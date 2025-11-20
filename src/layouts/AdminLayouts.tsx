@@ -14,15 +14,17 @@ import {
 } from "../components/ui/sidebar";
 import { Button } from "../components/ui/button";
 import {
-  Package,
-  Users,
-  LogOut,
-  Moon,
-  Sun,
   Code,
-  Workflow,
-  Plus,
-  GalleryHorizontalEnd,
+  Package,
+  GraduationCap,
+  Briefcase,
+  PlusCircle,
+  FolderOpen,
+  FilePlus2,
+  Layers,
+  LogOut,
+  Sun,
+  Moon,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -51,12 +53,14 @@ export default function AdminLayout() {
   const menuItems = [
     { name: "All Skills", icon: Code, path: "/admin" },
     { name: "Add Skills", icon: Package, path: "/admin/add-skill" },
-    { name: "All Works", icon: Users, path: "/admin/all-works" },
-    { name: "Add Works", icon: Workflow, path: "/admin/add-works" },
-    { name: "Add Experience", icon: Plus, path: "/admin/add-experience" },
+    { name: "Educations", icon: GraduationCap, path: "/admin/educations" },
+    { name: "All Works", icon: FolderOpen, path: "/admin/all-works" },
+    { name: "Add Works", icon: FilePlus2, path: "/admin/add-works" },
+    { name: "Add Experience", icon: PlusCircle, path: "/admin/add-experience" },
+    { name: "Add Educations", icon: Layers, path: "/admin/add-educations" },
     {
       name: "Experience",
-      icon: GalleryHorizontalEnd,
+      icon: Briefcase,
       path: "/admin/experience",
     },
   ];

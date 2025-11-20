@@ -3,16 +3,17 @@ import Container from "../components/Container";
 // --- Links for Navigation and Socials ---
 // You can manage your links here or pass them as props
 const navLinks = [
-  { title: "Home", href: "" },
-  { title: "About", href: "about" },
+  { title: "Home", href: "/" },
+  { title: "About", href: "skills" },
   { title: "Projects", href: "projects" },
-  { title: "Contact", href: "contact" },
 ];
 
 const socialLinks = [
-  { title: "GitHub", href: "https://github.com/your-username" },
-  { title: "LinkedIn", href: "https://linkedin.com/in/your-username" },
-  { title: "Twitter", href: "https://twitter.com/your-username" },
+  { title: "GitHub", href: "https://github.com/AbdullayevKhazar" },
+  {
+    title: "LinkedIn",
+    href: "https://www.linkedin.com/in/x%C9%99z%C9%99rabdullayev/",
+  },
 ];
 // ----------------------------------------
 
