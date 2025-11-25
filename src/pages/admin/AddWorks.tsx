@@ -44,7 +44,10 @@ const AddWorks = () => {
       Object.entries(values).forEach(([key, value]) =>
         formData.append(key, value.toString())
       );
-      await axios.post("http://localhost:8000/api/my-works/add-work", formData);
+      await axios.post(
+        "https://api.xab.net.az/api/my-works/add-work",
+        formData
+      );
       resetForm();
       setPreview(null);
       setFile(null);

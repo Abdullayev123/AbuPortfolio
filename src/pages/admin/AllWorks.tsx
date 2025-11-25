@@ -16,7 +16,7 @@ const AllWorks = () => {
 
   useEffect(() => {
     const fetchWorks = async () => {
-      const res = await axios.get("http://localhost:8000/api/my-works");
+      const res = await axios.get("https://api.xab.net.az/api/my-works");
       setWorks(res.data);
     };
     fetchWorks();

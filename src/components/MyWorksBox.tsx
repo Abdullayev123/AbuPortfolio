@@ -34,7 +34,7 @@ const MyWorksBox = ({
       return;
 
     try {
-      await axios.delete(`http://localhost:8000/api/my-works/${id}`);
+      await axios.delete(`https://api.xab.net.az/api/my-works/${id}`);
       if (onDelete) onDelete(id);
     } catch (err) {
       console.error(err);

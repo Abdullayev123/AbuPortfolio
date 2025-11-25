@@ -17,7 +17,7 @@ const AddSkill = () => {
         initialValues={{ name: "", description: "", iconName: "" }}
         validationSchema={validateSchema}
         onSubmit={async (values, { setSubmitting }) => {
-          await axios.post("http://localhost:8000/api/skills/add-skill", {
+          await axios.post("https://api.xab.net.az/api/skills/add-skill", {
             name: values.name,
             description: values.description,
             iconName: values.iconName,

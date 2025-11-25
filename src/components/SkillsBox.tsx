@@ -16,7 +16,7 @@ const SkillsBox = ({
   id?: string;
 }) => {
   const deleteSkill = async () => {
-    await axios.delete(`http://localhost:8000/api/skills/delete/${id}`);
+    await axios.delete(`https://api.xab.net.az/api/skills/delete/${id}`);
   };
   return (
     <div

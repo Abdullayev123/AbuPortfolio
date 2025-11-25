@@ -34,7 +34,7 @@ const EditExperience = () => {
   const fetchExperience = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8000/api/experiences/${id}`
+        `https://api.xab.net.az/api/experiences/${id}`
       );
       setInitialValues(res.data);
     } catch (err) {
@@ -50,7 +50,7 @@ const EditExperience = () => {
 
   const handleSubmit = async (values: Experience) => {
     try {
-      await axios.put(`http://localhost:8000/api/experiences/${id}`, values);
+      await axios.put(`https://api.xab.net.az/api/experiences/${id}`, values);
       navigate("/admin/experience");
     } catch (err) {
       console.log(err);

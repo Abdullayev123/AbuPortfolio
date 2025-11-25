@@ -29,7 +29,7 @@ const EditSkill = () => {
   useEffect(() => {
     const fetchSkill = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/skills/${id}`);
+        const res = await axios.get(`https://api.xab.net.az/api/skills/${id}`);
         setSkill(res.data);
       } catch (err) {
         console.error("Failed to fetch skill:", err);
@@ -44,7 +44,7 @@ const EditSkill = () => {
   const handleSubmit = async (values: Skill) => {
     try {
       setSaving(true);
-      await axios.put(`http://localhost:8000/api/skills/update/${id}`, values);
+      await axios.put(`https://api.xab.net.az/api/skills/update/${id}`, values);
       alert("Skill updated successfully!");
       navigate("/admin"); // or wherever your skills list is
     } catch (err) {

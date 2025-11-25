@@ -23,7 +23,9 @@ const ProjectDetails = () => {
       setLoading(true);
       setError(null);
       try {
-        const res = await axios.get(`http://localhost:8000/api/my-works/${id}`);
+        const res = await axios.get(
+          `https://api.xab.net.az/api/my-works/${id}`
+        );
         setWork(res.data);
       } catch (err) {
         console.error("Failed to fetch project:", err);

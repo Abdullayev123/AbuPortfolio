@@ -42,7 +42,7 @@ const AddExperience = () => {
       }}
       validationSchema={validationSchema}
       onSubmit={(values) => {
-        axios.post("http://localhost:8000/api/experiences", values);
+        axios.post("https://api.xab.net.az/api/experiences", values);
       }}
     >
       {({ values, errors, touched }) => (
