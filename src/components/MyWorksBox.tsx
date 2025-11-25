@@ -84,7 +84,6 @@ const MyWorksBox = ({
         {/* Admin Buttons or Live/GitHub Links */}
         <div className="mt-6 flex items-center justify-between">
           {!isAdmin ? (
-            // 🌐 For Home page
             <div className="flex items-center gap-6">
               {liveUrl && (
                 <a

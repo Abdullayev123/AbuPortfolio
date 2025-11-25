@@ -3,6 +3,7 @@ import SkillsBox from "./SkillsBox";
 import axios from "axios";
 import Container from "./Container";
 interface SkillsProps {
+  _id: string;
   name: string;
   description: string;
   iconName: string;
@@ -35,6 +36,7 @@ const Skills = () => {
         <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-5">
           {skills.map((items) => (
             <SkillsBox
+              id={items._id}
               name={items.name}
               description={items.description}
               iconName={items.iconName}

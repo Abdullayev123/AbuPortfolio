@@ -15,8 +15,6 @@ const simpleIconMap: Record<
 };
 
 const DynamicIcon = ({ iconName, size = 48, color }: DynamicIconProps) => {
-  // Lucide
-
   // Simple Icons (React Icons)
   const SimpleIcon = simpleIconMap[`Si${iconName}`];
   if (SimpleIcon) {

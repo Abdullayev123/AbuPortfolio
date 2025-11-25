@@ -63,9 +63,15 @@ const ProjectDetails = () => {
       </div>
     );
   }
+  console.log(work.projectName);
 
   return (
     <>
+      <title>Project Details</title>
+      <meta
+        name="description"
+        content={`Detailed view of the project ${work.projectName} by Khazar Abdullayev.`}
+      />
       <div className="relative min-h-dvh bg-white text-[#1a1a1a] dark:bg-[#0F0E0E] dark:text-white pt-24 md:pt-60">
         {/* Grid background */}
         <div className="absolute top-0 left-0 w-full h-full z-0 grid grid-cols-20">

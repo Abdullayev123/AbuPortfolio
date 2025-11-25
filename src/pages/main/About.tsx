@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Container from "../../components/Container";
-import { Helmet } from "react-helmet-async";
 
 interface Experience {
   _id: string;
@@ -56,24 +55,14 @@ const About = () => {
       month: "short",
     });
   };
-  console.log("helmet updated");
 
   return (
     <>
-      <Helmet>
-        <title>Experience and Skills | KhazarAbu</title>
-        <meta
-          name="description"
-          content="Khazar Abdullayev education and experiences."
-        />
-
-        {/* OG tags */}
-        <meta property="og:title" content="Experience and Skills | KhazarAbu" />
-        <meta
-          property="og:description"
-          content="Khazar Abdullayev education and experiences."
-        />
-      </Helmet>
+      <title>Experience and Education Khazar's</title>
+      <meta
+        name="description"
+        content="Experience and Education details of Khazar Abdullayev, showcasing work history and academic background."
+      />
       <div
         className="
       h-auto w-full 

@@ -66,67 +66,71 @@ export default function AdminLayout() {
   ];
 
   return (
-    <div className="flex min-h-screen bg-background text-foreground transition-colors">
-      {/* Sidebar */}
-      <Sidebar className="border-r border-border">
-        <SidebarHeader className="p-4 font-bold text-lg">
-          Admin Panel
-        </SidebarHeader>
+    <>
+      <title>Admin Pages</title>
+      <meta name="robots" content="noindex,follow" />
+      <div className="flex min-h-screen bg-background text-foreground transition-colors">
+        {/* Sidebar */}
+        <Sidebar className="border-r border-border">
+          <SidebarHeader className="p-4 font-bold text-lg">
+            Admin Panel
+          </SidebarHeader>
 
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupLabel>Main</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {menuItems.map((item) => {
-                  const isActive = location.pathname === item.path;
-                  return (
-                    <SidebarMenuItem key={item.name}>
-                      <SidebarMenuButton
-                        asChild
-                        isActive={isActive}
-                        className="w-full"
-                      >
-                        <Link
-                          to={item.path}
-                          className="flex items-center gap-2"
+          <SidebarContent>
+            <SidebarGroup>
+              <SidebarGroupLabel>Main</SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {menuItems.map((item) => {
+                    const isActive = location.pathname === item.path;
+                    return (
+                      <SidebarMenuItem key={item.name}>
+                        <SidebarMenuButton
+                          asChild
+                          isActive={isActive}
+                          className="w-full"
                         >
-                          <item.icon className="w-5 h-5" />
-                          {item.name}
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  );
-                })}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
+                          <Link
+                            to={item.path}
+                            className="flex items-center gap-2"
+                          >
+                            <item.icon className="w-5 h-5" />
+                            {item.name}
+                          </Link>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    );
+                  })}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          </SidebarContent>
 
-        {/* Footer with dark mode toggle */}
-        <SidebarFooter>
-          <Button variant="ghost" className="gap-2">
-            <LogOut className="w-5 h-5" /> Logout
-          </Button>
+          {/* Footer with dark mode toggle */}
+          <SidebarFooter>
+            <Button variant="ghost" className="gap-2">
+              <LogOut className="w-5 h-5" /> Logout
+            </Button>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsDark((prev) => !prev)}
-          >
-            {isDark ? (
-              <Sun className="w-5 h-5" />
-            ) : (
-              <Moon className="w-5 h-5" />
-            )}
-          </Button>
-        </SidebarFooter>
-      </Sidebar>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsDark((prev) => !prev)}
+            >
+              {isDark ? (
+                <Sun className="w-5 h-5" />
+              ) : (
+                <Moon className="w-5 h-5" />
+              )}
+            </Button>
+          </SidebarFooter>
+        </Sidebar>
 
-      {/* Main Content */}
-      <main className="p-2 transition-colors w-full">
-        <Outlet />
-      </main>
-    </div>
+        {/* Main Content */}
+        <main className="p-2 transition-colors w-full">
+          <Outlet />
+        </main>
+      </div>
+    </>
   );
 }

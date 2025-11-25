@@ -24,6 +24,7 @@ const SkillsBox = ({
                  border backdrop-blur-lg transition-all duration-300  z-10
                   border-gray-200  bg-white/90 dark:bg-white/5 hover:bg-white/90 shadow-md
                   dark:border-white/10  dark:backdrop-blur-lg dark:hover:bg-white/10"
+      key={id}
     >
       <div
         className="flex items-center justify-center w-12 h-12 rounded-md
