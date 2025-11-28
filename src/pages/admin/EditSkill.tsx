@@ -30,7 +30,7 @@ const EditSkill = () => {
     const fetchSkill = async () => {
       try {
         const res = await axios.get(
-          `https://abufoliobackend-1.onrender.com/skills/${id}`
+          `https://abufoliobackend-1.onrender.com/api/skills/${id}`
         );
         setSkill(res.data);
       } catch (err) {
@@ -47,7 +47,7 @@ const EditSkill = () => {
     try {
       setSaving(true);
       await axios.put(
-        `https://abufoliobackend-1.onrender.com/skills/update/${id}`,
+        `https://abufoliobackend-1.onrender.com/api/skills/update/${id}`,
         values
       );
       alert("Skill updated successfully!");

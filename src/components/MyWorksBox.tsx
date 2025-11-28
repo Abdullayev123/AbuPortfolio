@@ -35,7 +35,7 @@ const MyWorksBox = ({
 
     try {
       await axios.delete(
-        `https://abufoliobackend-1.onrender.com/my-works/${id}`
+        `https://abufoliobackend-1.onrender.com/api/my-works/${id}`
       );
       if (onDelete) onDelete(id);
     } catch (err) {

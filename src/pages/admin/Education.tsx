@@ -23,7 +23,7 @@ const Education = () => {
     try {
       setLoading(true);
       const res = await axios.get(
-        "https://abufoliobackend-1.onrender.com/educations"
+        "https://abufoliobackend-1.onrender.com/api/educations"
       );
       setEducations(res.data.data || res.data || []);
     } catch (err) {
@@ -34,7 +34,7 @@ const Education = () => {
   };
   const handleDelete = async (id: string) => {
     await axios.delete(
-      `https://abufoliobackend-1.onrender.com/educations/${id}`
+      `https://abufoliobackend-1.onrender.com/api/educations/${id}`
     );
     fetchEducations();
   };

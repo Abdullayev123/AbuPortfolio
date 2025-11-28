@@ -22,7 +22,7 @@ const Experiences = () => {
   const fetchExperiences = async () => {
     try {
       const res = await axios.get(
-        "https://abufoliobackend-1.onrender.com/experiences"
+        "https://abufoliobackend-1.onrender.com/api/experiences"
       );
       setData(res.data);
     } catch (err) {
@@ -33,7 +33,7 @@ const Experiences = () => {
   };
   const handleDelete = async (id: string) => {
     await axios.delete(
-      `https://abufoliobackend-1.onrender.com/experiences/${id}`
+      `https://abufoliobackend-1.onrender.com/api/experiences/${id}`
     );
     fetchExperiences();
   };

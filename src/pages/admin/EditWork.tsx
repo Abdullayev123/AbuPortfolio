@@ -45,7 +45,7 @@ const EditWork = () => {
     const fetchWork = async () => {
       try {
         const res = await axios.get(
-          `https://abufoliobackend-1.onrender.com/my-works/${id}`
+          `https://abufoliobackend-1.onrender.com/api/my-works/${id}`
         );
         const work = res.data;
 
@@ -81,7 +81,7 @@ const EditWork = () => {
       );
 
       await axios.put(
-        `https://abufoliobackend-1.onrender.com/my-works/${id}`,
+        `https://abufoliobackend-1.onrender.com/api/my-works/${id}`,
         formData
       );
 

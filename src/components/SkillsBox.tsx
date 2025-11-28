@@ -17,7 +17,7 @@ const SkillsBox = ({
 }) => {
   const deleteSkill = async () => {
     await axios.delete(
-      `https://abufoliobackend-1.onrender.com/skills/delete/${id}`
+      `https://abufoliobackend-1.onrender.com/api/skills/delete/${id}`
     );
   };
   return (

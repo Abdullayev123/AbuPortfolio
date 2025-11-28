@@ -28,7 +28,7 @@ const AddEducation = () => {
         })}
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           await axios.post(
-            "https://abufoliobackend-1.onrender.com/educations",
+            "https://abufoliobackend-1.onrender.com/api/educations",
             values
           );
           setSubmitting(false);

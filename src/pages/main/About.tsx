@@ -36,7 +36,7 @@ const About = () => {
     try {
       setLoading(true);
       const res = await axios.get(
-        `https://abufoliobackend-1.onrender.com/${tab}`
+        `https://abufoliobackend-1.onrender.com/api/${tab}`
       );
       setData(res.data);
     } catch (err) {

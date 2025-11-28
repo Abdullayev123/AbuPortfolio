@@ -23,7 +23,7 @@ const AllSkills = () => {
         setIsLoading(true);
         setError(null);
         const res = await axios.get(
-          "https://abufoliobackend-1.onrender.com/skills"
+          "https://abufoliobackend-1.onrender.com/api/skills"
         );
         setSkills(res.data);
       } catch (err) {
